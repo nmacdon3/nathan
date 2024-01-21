@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { InViewHookResponse } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 
 const Section6 = ({ section }: { section: InViewHookResponse }) => {
+  const navigate = useNavigate();
+
   const [rendered, setRendered] = useState<boolean>(false);
 
   setTimeout(() => {
@@ -51,7 +54,10 @@ const Section6 = ({ section }: { section: InViewHookResponse }) => {
         ) : (
           <h1 className="flex flex-col  h-[100vh] w-[100vw] justify-center items-start ps-36 transform -translate-y-0">
             <div className="flex flex-col items-start ">
-              <button className="px-24 py-12 bg-black shadow-lg hover:bg-zinc-800 hover:shadow-xl transition  text-white flex items-center  ">
+              <button
+                onClick={() => navigate("/contact")}
+                className="px-24 py-12 bg-black shadow-lg hover:bg-zinc-800 hover:shadow-xl transition  text-white flex items-center  "
+              >
                 <div className="me-2"> {"Let's"}</div>
                 <Typewriter
                   options={{
