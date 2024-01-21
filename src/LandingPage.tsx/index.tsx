@@ -15,9 +15,16 @@ interface SectionType {
   component: ({ section }: { section: InViewHookResponse }) => JSX.Element;
 }
 
+export const TypeWriterSettings = {
+  deleteSpeed: 1000000,
+  autoStart: true,
+  delay: 40,
+  cursor: "_",
+};
+
 const SnapSection = ({ children }: { children: ReactNode }) => {
   return (
-    <section className="snap-center flex items-center justify-center h-[100vh] overflow-hidden">
+    <section className="snap-center flex items-center justify-center h-[100vh] overflow-hidden mb-10">
       {children}
     </section>
   );
@@ -58,7 +65,7 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="text-zinc-800 w-100 snap-mandatory snap-y h-[100vh] overflow-y-scroll font-roboto">
+    <div className="text-zinc-800 w-100 snap-mandatory snap-y h-[100vh] overflow-y-scroll font-roboto font-thin">
       <NavCarousel sections={sections} />
       {sections.map((section, i) => (
         <SnapSection key={i}>
