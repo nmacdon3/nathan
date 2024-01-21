@@ -8,6 +8,7 @@ import Section3 from "./Section3";
 import Section4 from "./Section4";
 import Section5 from "./Section5";
 import Section6 from "./Section6";
+import Section7 from "./Section7";
 
 interface SectionType {
   isVisible: InViewHookResponse;
@@ -16,7 +17,7 @@ interface SectionType {
 
 const SnapSection = ({ children }: { children: ReactNode }) => {
   return (
-    <section className="snap-center flex items-center justify-center h-[100vh] ">
+    <section className="snap-center flex items-center justify-center h-[100vh] overflow-hidden">
       {children}
     </section>
   );
@@ -53,6 +54,7 @@ const LandingPage = () => {
     { isVisible: useInView(), component: Section4 },
     { isVisible: useInView(), component: Section5 },
     { isVisible: useInView(), component: Section6 },
+    { isVisible: useInView(), component: Section7 },
   ];
 
   return (
