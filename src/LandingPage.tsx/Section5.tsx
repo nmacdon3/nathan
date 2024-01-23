@@ -144,8 +144,8 @@ const Content = () => {
       <div className="text-3xl px-10 pb-10 absolute bottom-0 left-0 pt-28 h-64 via-transparent w-[100vw] z-100 bg-gradient-to-b from-transparent to-white flex items-center gap-10">
         <div
           className={classNames(
-            "transition-all duration-1000 h-28  backdrop-blur-lg rounded-full flex item-center gap-10 w-[95%] absolute z-0 left-10 pl-36 font-thin  items-center",
-            showPortfolio ? "bg-zinc-200" : "bg-white"
+            "transition-all duration-1000 h-28  backdrop-blur-lg rounded-full flex item-center gap-10 w-[80%] absolute z-0 left-10 pl-36 font-thin  items-center",
+            showPortfolio ? "bg-gradient-to-r from-zinc-300" : "bg-white"
           )}
         >
           {showPortfolio && (

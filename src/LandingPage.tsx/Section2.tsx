@@ -10,7 +10,7 @@ const Section2 = ({ section }: { section: InViewHookResponse }) => {
         <Typewriter
           options={{
             ...TypeWriterSettings,
-            strings: ["We may not know each other"],
+            strings: ["We may not know each other."],
             delay: 80,
           }}
         />

@@ -33,9 +33,9 @@ const Content = () => {
       </div>
     </h1>
   ) : (
-    <h1 className=" flex flex-col gap-6 bg-indigo-950 h-[100vh] w-[100vw] text-white justify-center items-start font-mono ps-36 relative overflow-hidden">
+    <h1 className=" flex flex-col gap-6 bg-indigo-950 h-[100vh] w-[100vw] text-white justify-center items-start font-mono ps-36  overflow-hidden">
       <div className="absolute h-16 w-[100vw] bg-black opacity-25 mt-16 left-0 z-0"></div>
-      <div className="absolute left-4 flex flex-col gap-6 text-blue-500">
+      <div className="absolute left-4 flex flex-col gap-6 text-blue-500 z-100">
         {numbers.map((num) => (
           <div key={num}>{num}</div>
         ))}
