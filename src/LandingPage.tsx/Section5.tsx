@@ -29,14 +29,14 @@ const EphemeralImage = ({
 
     setTimeout(() => {
       setCount((prev) => prev + 1);
-    }, delay + 20000);
+    }, delay + 12000);
   }, [delay, count]);
 
   return (
     <Transition
       show={show}
       className={className}
-      enter="transition   duration-[5000ms] transform"
+      enter="transition  duration-[5000ms] transform"
       enterFrom="opacity-0 translate-y-96"
       enterTo="opacity-100"
       leave="transition  duration-[5000ms] transform"
@@ -81,42 +81,42 @@ const Content = () => {
             className="absolute left-20 top-40"
           />
           <EphemeralImage
-            delay={1600}
+            delay={1500}
             img="/messenger.png"
             className="absolute right-20 top-56"
           />
           <EphemeralImage
-            delay={3200}
+            delay={3000}
             img="/music.png"
             className="absolute left-1/2 top-60"
           />
           <EphemeralImage
-            delay={4800}
+            delay={4500}
             img="/photography.png"
             className="absolute left-10 top-28"
           />
           <EphemeralImage
-            delay={6400}
+            delay={6000}
             img="/receipt.png"
             className="absolute right-20 top-20"
           />
           <EphemeralImage
-            delay={7200}
+            delay={7500}
             img="/toggles.png"
             className="absolute left-1/2 top-96"
           />
           <EphemeralImage
-            delay={9600}
+            delay={9000}
             img="/timer.png"
             className="absolute left-10 top-20"
           />
           <EphemeralImage
-            delay={11000}
+            delay={10500}
             img="/shop.png"
             className="absolute right-20 top-40"
           />
           <EphemeralImage
-            delay={13200}
+            delay={12000}
             img="/vsco.png"
             className="absolute left-1/2 top-20"
           />
@@ -141,11 +141,11 @@ const Content = () => {
         )}
       </div>
 
-      <div className="text-3xl px-10 pb-10 absolute bottom-0 left-0 pt-28 h-64 via-transparent w-[100vw] z-100 bg-gradient-to-b from-transparent to-white flex items-center gap-10">
+      <div className="text-2xl px-10 pb-10 absolute bottom-10 left-0 pt-28 h-64 via-transparent w-[100vw] z-100   flex items-center gap-10">
         <div
           className={classNames(
-            "transition-all duration-1000 h-28  backdrop-blur-lg rounded-full flex item-center gap-10 w-[80%] absolute z-0 left-10 pl-36 font-thin  items-center",
-            showPortfolio ? "bg-gradient-to-r from-zinc-300" : "bg-white"
+            "transition-all duration-1000 h-40 backdrop-blur-md rounded-lg text-white flex item-start gap-10 w-[30rem] absolute z-0 left-24 pl-24 pr-10 pt-8 font-thin",
+            showPortfolio ? "bg-zinc-900/50 shadow-xl " : "bg-white"
           )}
         >
           {showPortfolio && (
@@ -165,7 +165,7 @@ const Content = () => {
             show={transitionProfile}
             className="absolute -left-6 z-100 ring-8 ring-white rounded-full  border-8"
             enter="transition scale-100  duration-[2000ms] transform"
-            enterFrom="translate-x-[43vw] -translate-y-[45vh] scale-100"
+            enterFrom="translate-x-[44vw] -translate-y-[40vh] scale-100"
             enterTo="translate-x-0 translate-y-0 scale-50"
           >
             <img

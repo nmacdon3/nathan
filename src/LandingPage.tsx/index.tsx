@@ -1,13 +1,9 @@
 import classNames from "classnames";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import { InViewHookResponse, useInView } from "react-intersection-observer";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Transition } from "@headlessui/react";
-import { BiDownArrow, BiUpArrow } from "react-icons/bi";
-import { CiDesktopMouse2 } from "react-icons/ci";
-import { CgCheck } from "react-icons/cg";
-
-import "react-circular-progressbar/dist/styles.css";
+import { HiOutlineChevronDown } from "react-icons/hi";
+import { IoMdMenu } from "react-icons/io";
 
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -33,7 +29,7 @@ export const TypeWriterSettings = {
 
 const SnapSection = ({ children }: { children: ReactNode }) => {
   return (
-    <section className="snap-center flex items-center justify-center h-[100vh] overflow-hidden mb-10">
+    <section className="snap-center flex items-center justify-center h-[100vh] overflow-hidden relative mb-1">
       {children}
     </section>
   );
@@ -62,140 +58,63 @@ const NavCarousel = ({ sections }: { sections: SectionType[] }) => {
   );
 };
 
-const useCounter = (maxValue: number) => {
-  const [value, setValue] = useState(0);
+const NavSignal = ({ time }: { time: number }) => {
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setValue((prevValue) => {
-        if (prevValue < maxValue) {
-          return prevValue + 1;
-        } else {
-          clearInterval(timer);
-          return prevValue;
-        }
-      });
-    }, 4);
-
-    return () => clearInterval(timer);
-  }, [maxValue]);
-
-  return value;
-};
-
-//a div that looks like a down arrow key from a keyboard
-const DownArrowKey = () => {
-  return (
-    <div className=" shadow-lg text-white p-4 rounded-lg bg-gradient-to-b from-zinc-500/30 to-zinc-900/50 backdrop-blur-sm">
-      <BiDownArrow className="h-5 w-5" />
-    </div>
-  );
-};
-
-const UpArrowKey = () => {
-  return (
-    <div className="shadow-lg p-4  text-white  rounded-lg bg-gradient-to-b from-zinc-500/30 to-zinc-900/50 backdrop-blur-sm">
-      <BiUpArrow className="h-5 w-5" />
-    </div>
-  );
-};
-
-const ProgressBar = ({
-  time,
-  showNavTips,
-}: {
-  time: number;
-  showNavTips: boolean | undefined;
-}) => {
-  const value = useCounter(time);
-
-  const width = (value / time) * 100;
-
-  const ready = width === 100;
+  setTimeout(() => {
+    setShow(true);
+  }, time);
 
   return (
-    <div
-      className="absolute right-10 bottom-10   z-1000 flex items-center"
-      style={{ width: 50, height: 50 }}
+    <Transition
+      show={show}
+      className="absolute bottom-12 transition duration-[5000ms]"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
     >
-      {showNavTips && (
-        <Transition
-          show={ready}
-          className="absolute  right-20 "
-          enter="transition linear duration-[5000ms]"
-          enterFrom=" opacity-0"
-          enterTo=" opacity-100"
-        >
-          <div className="flex items-center w-96 gap-4 divide-x-0 divide-gray-50   ">
-            <CiDesktopMouse2 className="h-12 w-12 flex-shrink-0 animate-wiggle text-zinc-700" />
-            <div className="flex items-center  gap-2 animate-pulse ">
-              <DownArrowKey />
-              <UpArrowKey />
-            </div>
-            <div className="h-10 w-[1px] bg-zinc-500 flex-shrink-0"></div>
-            <span className="">
-              Use up and down arrow keys or scroll to navigate
-            </span>
-          </div>
-        </Transition>
-      )}
-
-      <CircularProgressbar
-        value={width}
-        className="opacity-50 z-100"
-        styles={buildStyles({
-          pathColor: `rgba(30, 190, 140, ${width / 100})`,
-          trailColor: "transparent",
-        })}
+      <HiOutlineChevronDown
+        className="h-14 w-14 text-zinc-300 animate-bounce"
+        style={{ animationDuration: "3000ms" }}
       />
-      <Transition
-        show={ready}
-        className="z-0 shadow duration-[1000ms] absolute bg-gradient-to-b text-white from-emerald-200 via-emerald-800 to-emerald-600  rounded-full h-full w-full flex items-center justify-center "
-        enter="transition-all linear duration-300"
-        enterFrom=" scale-0"
-        enterTo=" scale-100"
-      >
-        <CgCheck className="h-10 w-10" />
-      </Transition>
-    </div>
+    </Transition>
   );
 };
 
 const LandingPage = () => {
   const sections: SectionType[] = [
-    { isVisible: useInView(), component: Section1, time: 1, showNavTips: true },
+    { isVisible: useInView(), component: Section1, time: 1 },
     {
       isVisible: useInView(),
       component: Section2,
-      time: 1000,
-      showNavTips: true,
+      time: 4000,
     },
     {
       isVisible: useInView(),
       component: Section3,
-      time: 2500,
-      showNavTips: true,
+      time: 7500,
     },
-    { isVisible: useInView(), component: Section4, time: 1500 },
-    { isVisible: useInView(), component: Section5, time: 3000 },
-    { isVisible: useInView(), component: Section6, time: 1600 },
+    { isVisible: useInView(), component: Section4, time: 7500 },
+    { isVisible: useInView(), component: Section5, time: 9000 },
+    { isVisible: useInView(), component: Section6, time: 7600 },
     { isVisible: useInView(), component: Section7 },
   ];
 
   return (
     <div className="text-zinc-800 w-100 snap-mandatory snap-y h-[100vh] overflow-y-scroll font-roboto font-thin">
-      <NavCarousel sections={sections} />
       {sections.map((section, i) => (
         <SnapSection key={i}>
           <section.component section={section.isVisible} />
           {section.time && section.isVisible.inView && (
-            <ProgressBar
-              time={section.time}
-              showNavTips={section.showNavTips}
-            />
+            <NavSignal time={section.time} />
           )}
         </SnapSection>
       ))}
+      <NavCarousel sections={sections} />
+      <div className="absolute top-0 left-0 h-48 w-96 pl-6 pt-4 group/1 transition-opacity ">
+        <div className="group-hover/1:opacity-100 opacity-25 transition-all duration-[500ms] w-10 hover:w-96 group/2  flex justify-end">
+          <IoMdMenu className="h-10 w-10 transition-all duration-[500ms]  group-hover/2:rotate-90  " />
+        </div>
+      </div>
     </div>
   );
 };
