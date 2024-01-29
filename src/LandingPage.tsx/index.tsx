@@ -48,7 +48,7 @@ const Dot = ({ active }: { active: boolean }) => {
 
 const NavCarousel = ({ sections }: { sections: SectionType[] }) => {
   return (
-    <div className="absolute right-12 top-1/2 flex flex-col justify-center h-0">
+    <div className="absolute md:right-12 right-4 top-1/2 flex flex-col justify-center h-0">
       <div className="flex flex-col gap-4">
         {sections.map(({ isVisible }, i) => (
           <Dot key={i} active={isVisible.inView} />

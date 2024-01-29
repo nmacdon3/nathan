@@ -43,7 +43,12 @@ const EphemeralImage = ({
       leaveFrom="opacity-100"
       leaveTo="opacity-0 -translate-y-96"
     >
-      <img src={img} alt="test" className="h-96 rounded-md shadow-xl" />
+      <img
+        src={img}
+        // TODO: fix this
+        alt="test"
+        className="h-96 rounded-md shadow-xl  object-cover"
+      />
     </Transition>
   );
 };
@@ -129,7 +134,7 @@ const Content = () => {
             <img
               src="/headshot.webp"
               alt="test"
-              className="h-56 w-56 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white"
+              className="md:h-56 md:w-56 h-28 w-28 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white"
             />
             <Typewriter
               options={{
@@ -140,7 +145,7 @@ const Content = () => {
           </>
         )}
       </div>
-
+      {/* This needs to be made relative in order to work on all viewport sizes */}
       <div className="text-2xl px-10 pb-10 absolute bottom-10 left-0 pt-28 h-64 via-transparent w-[100vw] z-100   flex items-center gap-10">
         <div
           className={classNames(
@@ -171,7 +176,7 @@ const Content = () => {
             <img
               src="/headshot.webp"
               alt="test"
-              className="h-56 w-56 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white z-100"
+              className="md:h-56 md:w-56 h-28 w-28 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white z-100"
             />
           </Transition>
         )}
@@ -179,7 +184,7 @@ const Content = () => {
           src="/headshot.webp"
           alt="test"
           className={classNames(
-            "h-28 w-28 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white z-100",
+            "md:h-28 md:w-28 h-14 w-14 rounded-full object-cover shadow-xl z-100 relative ring-8 ring-white z-100",
             finalProfile ? "visible" : "invisible"
           )}
         />

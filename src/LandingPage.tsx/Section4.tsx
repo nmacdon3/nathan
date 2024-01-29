@@ -5,12 +5,12 @@ import { TypeWriterSettings } from ".";
 
 const Section4 = ({ section }: { section: InViewHookResponse }) => {
   return (
-    <div ref={section.ref} className="text-5xl">
+    <div ref={section.ref} className="text-5xl w-56 md:w-auto">
       {section.inView && (
         <Typewriter
           options={{
             ...TypeWriterSettings,
-            strings: ["But I know...", "How your users deserve to be treated."],
+            strings: ["But I know how your users deserve to be treated."],
             deleteSpeed: 1,
           }}
         />

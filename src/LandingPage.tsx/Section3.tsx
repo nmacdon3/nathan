@@ -5,7 +5,7 @@ import { TypeWriterSettings } from ".";
 
 const Section3 = ({ section }: { section: InViewHookResponse }) => {
   return (
-    <div ref={section.ref} className="text-5xl ">
+    <div ref={section.ref} className="text-5xl  w-56 md:w-auto">
       {section.inView && (
         <Typewriter
           options={{
