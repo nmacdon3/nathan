@@ -48,7 +48,7 @@ const Dot = ({ active }: { active: boolean }) => {
 
 const NavCarousel = ({ sections }: { sections: SectionType[] }) => {
   return (
-    <div className="absolute md:right-12 right-4 top-1/2 flex flex-col justify-center h-0">
+    <div className="absolute md:right-12 right-4 top-1/2 flex flex-col justify-center h-0 z-1000">
       <div className="flex flex-col gap-4">
         {sections.map(({ isVisible }, i) => (
           <Dot key={i} active={isVisible.inView} />
@@ -100,7 +100,19 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="text-zinc-800 w-100 snap-mandatory snap-y h-[100vh] overflow-y-scroll font-roboto font-thin">
+    <div className=" w-[100vw] snap-mandatory snap-y h-[100vh] overflow-y-scroll ">
+      {/* Does this do anything */}
+      <link rel="preload" as="image" href="/headshot.webp" />
+      <link rel="preload" as="image" href="/menu.png" />
+      <link rel="preload" as="image" href="/messenger.png" />
+      <link rel="preload" as="image" href="/music.png" />
+      <link rel="preload" as="image" href="/photography.png" />
+      <link rel="preload" as="image" href="/receipt.png" />
+      <link rel="preload" as="image" href="/shop.png" />
+      <link rel="preload" as="image" href="/timer.png" />
+      <link rel="preload" as="image" href="/toggles.png" />
+      <link rel="preload" as="image" href="/vsco.png" />
+
       {sections.map((section, i) => (
         <SnapSection key={i}>
           <section.component section={section.isVisible} />
@@ -110,11 +122,6 @@ const LandingPage = () => {
         </SnapSection>
       ))}
       <NavCarousel sections={sections} />
-      <div className="absolute top-0 left-0 h-48 w-96 pl-6 pt-4 group/1 transition-opacity ">
-        <div className="group-hover/1:opacity-100 opacity-25 transition-all duration-[500ms] w-10 hover:w-96 group/2  flex justify-end">
-          <IoMdMenu className="h-10 w-10 transition-all duration-[500ms]  group-hover/2:rotate-90  " />
-        </div>
-      </div>
     </div>
   );
 };
