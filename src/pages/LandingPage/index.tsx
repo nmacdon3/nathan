@@ -3,7 +3,6 @@ import { ReactNode, useState } from "react";
 import { InViewHookResponse, useInView } from "react-intersection-observer";
 import { Transition } from "@headlessui/react";
 import { HiOutlineChevronDown } from "react-icons/hi";
-import { IoMdMenu } from "react-icons/io";
 
 import Section1 from "./Section1";
 import Section2 from "./Section2";

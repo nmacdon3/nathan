@@ -63,11 +63,11 @@ const Contact = () => {
       <Transition
         show={show}
         enter="transition  duration-[4000ms]"
-        enterFrom="translate-y-10 opacity-0"
-        className="flex flex-col items-center"
+        enterFrom="md:translate-y-10 md:-translate-x-0 -translate-x-10 opacity-0"
+        className="flex flex-col md:items-center items-start pl-8 md:pl-0"
       >
-        <h1 className="text-6xl">Reach out anytime.</h1>
-        <div className="flex gap-16 text-zinc-500 mt-8">
+        <h1 className="md:text-6xl text-5xl">Reach out anytime.</h1>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 text-zinc-500 md:mt-8 mt-16 transform -translate-x-4">
           <OverlyComplicatedLink
             icon={{ value: FaLinkedin }}
             to="https://www.linkedin.com/in/nathanmacd/"
