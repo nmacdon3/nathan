@@ -1,4 +1,4 @@
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
@@ -49,9 +49,9 @@ const HeaderLinkGroup = ({
   );
 };
 
-const Menu = () => {
-  const [show, setShow] = useState(false);
+//@ts-ignore
 
+const Menu = () => {
   return (
     <div className="absolute top-6 left-8 text-3xl">
       <HeaderLinkGroup
@@ -65,6 +65,7 @@ const Menu = () => {
   );
 };
 
+//@ts-ignore
 const Menu2 = () => {
   const [show, setShow] = useState(false);
   return (
