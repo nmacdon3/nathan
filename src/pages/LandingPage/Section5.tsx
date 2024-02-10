@@ -36,12 +36,11 @@ const EphemeralImage = ({
     <Transition
       show={show}
       className={className}
-      enter="transition  duration-[5000ms] transform"
-      enterFrom="opacity-0 translate-y-96"
-      enterTo="opacity-100"
+      enter="transition  duration-[5000ms] transform "
+      enterFrom="opacity-0 translate-y-96 scale-50 "
+      enterTo="opacity-100 scale-100 "
       leave="transition  duration-[5000ms] transform"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0 -translate-y-96"
+      leaveTo="opacity-0 -translate-y-96 scale-50 "
     >
       <img
         src={img}
@@ -146,11 +145,13 @@ const Content = () => {
         )}
       </div>
       {/* This needs to be made relative in order to work on all viewport sizes */}
-      <div className="text-2xl px-10 pb-10 absolute bottom-10 left-0 pt-28 h-64 via-transparent w-[100vw] z-100   flex items-center gap-10">
+      <div className="text-2xl px-10 pb-10 absolute bottom-10 left-0 pt-28 h-64  w-[100vw] z-100   flex items-center gap-10 ">
         <div
           className={classNames(
-            "transition-all duration-1000 h-40 backdrop-blur-md rounded-lg text-white flex item-start gap-10 w-[30rem] absolute z-0 left-24 pl-24 pr-10 pt-8 font-thin",
-            showPortfolio ? "bg-zinc-900/50 shadow-xl " : "bg-white"
+            "transition-all  duration-1000 h-40  rounded-lg text-zinc-800 flex item-start gap-10 w-[30rem] absolute z-0 left-24 pl-24 pr-10 pt-8 font-thin",
+            showPortfolio
+              ? "bg-white/50 backdrop-blur-md shadow-2xl border-2 border-white"
+              : "bg-transparent"
           )}
         >
           {showPortfolio && (
