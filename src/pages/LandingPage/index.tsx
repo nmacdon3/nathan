@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { InViewHookResponse, useInView } from "react-intersection-observer";
 import { Transition } from "@headlessui/react";
 import { HiOutlineChevronDown } from "react-icons/hi";
@@ -98,20 +98,28 @@ const LandingPage = () => {
     { isVisible: useInView(), component: Section7 },
   ];
 
+  //preload all images in the public folder
+  useEffect(() => {
+    const images = [
+      "/headshot.webp",
+      "/menu.png",
+      "/messenger.png",
+      "/music.png",
+      "/photography.png",
+      "/receipt.png",
+      "/shop.png",
+      "/timer.png",
+      "/toggles.png",
+      "/vsco.png",
+    ];
+    images.forEach((image) => {
+      const img = new Image();
+      img.src = image;
+    });
+  }, []);
+
   return (
     <div className=" w-[100vw] snap-mandatory snap-y h-[100vh] overflow-y-scroll ">
-      {/* Does this do anything */}
-      <link rel="preload" as="image" href="/headshot.webp" />
-      <link rel="preload" as="image" href="/menu.png" />
-      <link rel="preload" as="image" href="/messenger.png" />
-      <link rel="preload" as="image" href="/music.png" />
-      <link rel="preload" as="image" href="/photography.png" />
-      <link rel="preload" as="image" href="/receipt.png" />
-      <link rel="preload" as="image" href="/shop.png" />
-      <link rel="preload" as="image" href="/timer.png" />
-      <link rel="preload" as="image" href="/toggles.png" />
-      <link rel="preload" as="image" href="/vsco.png" />
-
       {sections.map((section, i) => (
         <SnapSection key={i}>
           <section.component section={section.isVisible} />

@@ -1,8 +1,9 @@
-import { Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { InViewHookResponse } from "react-intersection-observer";
 import Typewriter from "typewriter-effect";
+import { HiX } from "react-icons/hi";
 
 import { TypeWriterSettings } from ".";
 
@@ -10,7 +11,9 @@ const EphemeralImage = ({
   delay,
   img,
   className,
+  onClick,
 }: {
+  onClick?: () => void;
   delay: number;
   img: string;
   className: string;
@@ -35,18 +38,20 @@ const EphemeralImage = ({
   return (
     <Transition
       show={show}
-      className={className}
-      enter="transition  duration-[5000ms] transform "
+      className={classNames(
+        "transition transform duration-[5000ms]",
+        className
+      )}
       enterFrom="opacity-0 translate-y-96 scale-50 "
       enterTo="opacity-100 scale-100 "
-      leave="transition  duration-[5000ms] transform"
       leaveTo="opacity-0 -translate-y-96 scale-50 "
     >
       <img
+        onClick={onClick}
         src={img}
         // TODO: fix this
         alt="test"
-        className="h-96 rounded-md shadow-xl  object-cover"
+        className="h-96 rounded-md shadow-xl  object-cover transition duration-500 hover:cursor-pointer hover:ring-2 ring-blue-500 hover:shadow-xl hover:shadow-blue-500"
       />
     </Transition>
   );
@@ -75,51 +80,122 @@ const Content = () => {
     }, 3900);
   }, []);
 
+  interface FocusType {
+    img: string;
+    title: string;
+    description: string;
+  }
+
+  const [focused, setFocused] = useState<FocusType>();
+
   return (
     <>
       {showPortfolio && (
         <>
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/menu.png",
+                title: "Menu",
+                description: "This is a menu",
+              })
+            }
             delay={0}
             img="/menu.png"
-            className="absolute left-20 top-40"
+            className={"absolute left-20 top-40"}
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/messenger.png",
+                title: "Messenger",
+                description: "This is a messenger",
+              })
+            }
             delay={1500}
             img="/messenger.png"
-            className="absolute right-20 top-56"
+            className={"absolute right-20 top-56"}
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/music.png",
+                title: "Music",
+                description: "This is a music player",
+              })
+            }
             delay={3000}
             img="/music.png"
-            className="absolute left-1/2 top-60"
+            className={"absolute left-1/2 top-60"}
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/photography.png",
+                title: "Photography",
+                description: "This is a photography app",
+              })
+            }
             delay={4500}
             img="/photography.png"
             className="absolute left-10 top-28"
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/receipt.png",
+                title: "Receipt",
+                description: "This is a receipt",
+              })
+            }
             delay={6000}
             img="/receipt.png"
             className="absolute right-20 top-20"
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/toggles.png",
+                title: "Toggles",
+                description: "This is a toggles",
+              })
+            }
             delay={7500}
             img="/toggles.png"
             className="absolute left-1/2 top-96"
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/timer.png",
+                title: "Timer",
+                description: "This is a timer",
+              })
+            }
             delay={9000}
             img="/timer.png"
             className="absolute left-10 top-20"
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/shop.png",
+                title: "Shop",
+                description: "This is a shop",
+              })
+            }
             delay={10500}
             img="/shop.png"
             className="absolute right-20 top-40"
           />
           <EphemeralImage
+            onClick={() =>
+              setFocused({
+                img: "/vsco.png",
+                title: "Vsco",
+                description: "This is a vsco",
+              })
+            }
             delay={12000}
             img="/vsco.png"
             className="absolute left-1/2 top-20"
@@ -190,6 +266,62 @@ const Content = () => {
           )}
         />
       </div>
+      <Transition appear show={!!focused} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative z-10"
+          onClose={() => setFocused(undefined)}
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/50" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center md:p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="text-white h-[100vh] w-[100vw] md:h-auto md:w-auto transform overflow-hidden md:rounded-2xl bg-white/25 backdrop-blur-lg md:border-2 border-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-xl font-medium leading-6  flex justify-between"
+                  >
+                    {focused?.title}
+                    <button
+                      className="rounded-full focus:outline-none focus:bg-white/25 outline-[2px] h-6 w-6 flex items-center justify-center"
+                      onClick={() => setFocused(undefined)}
+                    >
+                      <HiX />
+                    </button>
+                  </Dialog.Title>
+                  <div className="mt-6">
+                    <img
+                      src={focused?.img}
+                      alt="test"
+                      className="md:h-[50vh] md:max-w-[50vw] object-contain rounded-lg shadow-lg"
+                    />
+                    <p className=" mt-6">{focused?.description}</p>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
     </>
   );
 };
