@@ -104,6 +104,35 @@ const Menu2 = () => {
   );
 };
 
+const WorkInProgressBanner = () => {
+  const [show, setShow] = useState<boolean>(true);
+  return (
+    <Transition
+      show={show}
+      className="absolute top-0 left-0 w-[100vw] h-10 bg-yellow-500 text-white flex justify-center items-center px-7 z-1000"
+      leave="transition-all duration-[1000ms] ease-in"
+      leaveTo="transform -translate-y-10 opacity-0"
+    >
+      <span>
+        Hey! This app is under active development. Proceed if you dare.{" "}
+        <button
+          className="hover:underline text-yellow-700"
+          onClick={() => setShow(false)}
+        >
+          Click here
+        </button>{" "}
+        to hide this banner.
+      </span>
+      {/* <button
+        className="bg-white/20 rounded-full h-7 w-7 flex items-center justify-center"
+        onClick={() => setShow(false)}
+      >
+        <HiX />
+      </button> */}
+    </Transition>
+  );
+};
+
 const App = () => {
   return (
     <div>
@@ -123,6 +152,7 @@ const App = () => {
       </div>
       <div className="text-zinc-800 w-100 font-roboto font-thin backdrop-blur-3xl bg-white/75">
         <RouterProvider router={router} />
+        <WorkInProgressBanner />
         {/* <Menu /> */}
         {/* <div className="absolute top-0 left-0 h-48 w-96 pl-6 pt-4 group transition-opacity ">
           <div className="relative group-hover:opacity-100 opacity-25 transition-all duration-[500ms] w-10 group-hover:w-[460px]   flex justify-end overflow-hidden items-center gap-10">
