@@ -123,12 +123,6 @@ const WorkInProgressBanner = () => {
         </button>{" "}
         to hide this banner.
       </span>
-      {/* <button
-        className="bg-white/20 rounded-full h-7 w-7 flex items-center justify-center"
-        onClick={() => setShow(false)}
-      >
-        <HiX />
-      </button> */}
     </Transition>
   );
 };

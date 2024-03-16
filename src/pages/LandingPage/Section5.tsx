@@ -96,8 +96,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/menu.png",
-                title: "Menu",
-                description: "This is a menu",
+                title: "Account Settings Modal",
+                description:
+                  "This modal offers easily accessible tabs for each setting category you'd typically find in an application. The settings for Payment Options are expanded, allowing the user to enter their preferred payment method and details.",
               })
             }
             delay={0}
@@ -108,8 +109,8 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/messenger.png",
-                title: "Messenger",
-                description: "This is a messenger",
+                title: "Messaging App",
+                description: "A simple messaging widget between two users. ",
               })
             }
             delay={1500}
@@ -120,8 +121,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/music.png",
-                title: "Music",
-                description: "This is a music player",
+                title: "Music Player",
+                description:
+                  "Music players are a favorite of mine, since the best of them typically incorporate the album art into their look and feel. In this design, the atmosphere of the interface is determined by the album art on display.",
               })
             }
             delay={3000}
@@ -132,8 +134,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/photography.png",
-                title: "Photography",
-                description: "This is a photography app",
+                title: "Photography Site",
+                description:
+                  "I love phototgraphy sites for their minimal interfaces which allow the artwork to speak for itself. The less controls and distractions, the better. It's also important that the photos aren't forced into a uniform grid for displaying. Each element should embrace the orientation of the photo it is displaying. This makes the art feel alive, dynamic, and important.",
               })
             }
             delay={4500}
@@ -144,8 +147,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/receipt.png",
-                title: "Receipt",
-                description: "This is a receipt",
+                title: "Email Receipt",
+                description:
+                  "I'm always pleased when something as mundane as an email receipt has been designed with the same care and attention as a website or app that generated it. This is a simple receipt that tries to be more than just a record of a transaction.",
               })
             }
             delay={6000}
@@ -157,7 +161,7 @@ const Content = () => {
               setFocused({
                 img: "/toggles.png",
                 title: "Toggles",
-                description: "This is a toggles",
+                description: "No reason toggles can't be beautiful.",
               })
             }
             delay={7500}
@@ -169,7 +173,8 @@ const Content = () => {
               setFocused({
                 img: "/timer.png",
                 title: "Timer",
-                description: "This is a timer",
+                description:
+                  "This one is admittely a bit strange, but I wanted to try something I'd never seen before in other timer interfaces. I envisioned this interface mixing well with haptic feedback and satisfying snap transitions between intervals. The result is a unique timer interface that makes setting a 30 second timer a bit more fun.",
               })
             }
             delay={9000}
@@ -180,8 +185,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/shop.png",
-                title: "Shop",
-                description: "This is a shop",
+                title: "Online Shop",
+                description:
+                  "Imagine: an online shop that isn't flooded with unrelated ads.",
               })
             }
             delay={10500}
@@ -192,8 +198,9 @@ const Content = () => {
             onClick={() =>
               setFocused({
                 img: "/vsco.png",
-                title: "Vsco",
-                description: "This is a vsco",
+                title: "Social Media Profile",
+                description:
+                  "Honestly, this one was just an excuse for me to incorporate more photography into a web interface.",
               })
             }
             delay={12000}
@@ -308,13 +315,13 @@ const Content = () => {
                       <HiX />
                     </button>
                   </Dialog.Title>
-                  <div className="mt-6">
+                  <div className="mt-6 flex flex-col items-center md:max-w-[50vw]">
                     <img
                       src={focused?.img}
                       alt="test"
                       className="md:h-[50vh] md:max-w-[50vw] object-contain rounded-lg shadow-lg"
                     />
-                    <p className=" mt-6">{focused?.description}</p>
+                    <p className=" mt-6 w-100">{focused?.description}</p>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
