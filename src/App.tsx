@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { HiX } from "react-icons/hi";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import LandingPage from "./pages/LandingPage";
 import Contact from "./pages/Contact";
@@ -164,6 +165,7 @@ const App = () => {
         {/* <Menu2 /> */}
       </div>
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
