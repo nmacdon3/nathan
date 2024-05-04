@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import { InViewHookResponse } from "react-intersection-observer";
 import Typewriter from "typewriter-effect";
 import { HiX } from "react-icons/hi";
+import { Navigate } from "react-router-dom";
 
 import { TypeWriterSettings } from ".";
 
@@ -335,9 +336,14 @@ const Content = () => {
 
 const Section5 = ({ section }: { section: InViewHookResponse }) => {
   return (
-    <div ref={section.ref} className="text-5xl overflow-hidden p-10">
+    <div
+      data-section="5"
+      ref={section.ref}
+      className="text-5xl overflow-hidden p-10"
+    >
       {section.inView && (
         <>
+          <Navigate to="/?section=5" />
           <Content />
         </>
       )}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { InViewHookResponse } from "react-intersection-observer";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 
 const Content = () => {
@@ -65,8 +65,17 @@ const Content = () => {
 
 const Section6 = ({ section }: { section: InViewHookResponse }) => {
   return (
-    <div ref={section.ref} className="md:text-3xl text-xl flex font-mono ">
-      {section.inView && <Content />}
+    <div
+      data-section="7"
+      ref={section.ref}
+      className="md:text-3xl text-xl flex font-mono "
+    >
+      {section.inView && (
+        <>
+          <Navigate to="/?section=7" />
+          <Content />
+        </>
+      )}
     </div>
   );
 };

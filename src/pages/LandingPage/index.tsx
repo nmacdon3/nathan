@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { InViewHookResponse, useInView } from "react-intersection-observer";
 import { Transition } from "@headlessui/react";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import { useSearchParams } from "react-router-dom";
 
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -80,6 +81,17 @@ const NavSignal = ({ time }: { time: number }) => {
 };
 
 const LandingPage = () => {
+  const [searchParams] = useSearchParams();
+  const initSection = searchParams.get("section") || 0;
+
+  //scroll to the section based on the query parameter
+  useEffect(() => {
+    if (initSection) {
+      const section = document.querySelector(`[data-section="${initSection}"]`);
+      section?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   const sections: SectionType[] = [
     { isVisible: useInView(), component: Section1, time: 1 },
     {
